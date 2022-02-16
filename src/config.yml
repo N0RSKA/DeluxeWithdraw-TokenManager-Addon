@@ -1,0 +1,36 @@
+#########################################################################################
+#                                                                                       #
+# DeluxeWithdraw TokenManager Addon, a freemium addon by Norska @ https://norska.dev    #
+#                                                                                       #
+# Wiki: https://norska.dev/docs/welcome/                                                #
+# Support: https://norska.dev/discord/                                                  #
+#                                                                                       #
+# You are editing the config.yml file of DeluxeWithdraw TokenManager Addon.             #
+#                                                                                       #
+#########################################################################################
+
+# !!! DeluxeWithdraw is required for this addon:
+# SpigotMC -> https://norska.dev/r/spigot/dw/
+# Polymart -> https://norska.dev/r/polymart/dw/
+
+##################################
+#                                #
+#        GENERAL SETTINGS        #
+#                                #
+################################## 
+
+settings:
+   commands:
+   - 'TOKENWITHDRAW'
+   - 'TOKENBOTTLE'
+   # Note: What the creator placeholder will show when notes are given via the admin command.
+   creatorForAdminItems: "&6Your server name?"
+   minMaxWithdraw:
+      minWithdraw: 10
+      maxWithdraw: 1000
+   # Note: Which item layout to copy when players withdraw money onto notes. This must match an item section in items.yml of DeluxeWithdraw.
+   itemLayout: "tokenmanager_default"
+   # Note: What to display in messages containing vault currency
+   currencyName: " tokens"
+   # Note: 1 -> Will display currencyName before currency (e.g $50). 2 -> Will display currencyName after currency (e.g 50$)
+   currencyFormat: 2    
