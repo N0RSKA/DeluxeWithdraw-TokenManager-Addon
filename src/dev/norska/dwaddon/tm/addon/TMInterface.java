@@ -94,4 +94,10 @@ public class TMInterface implements DWAddonInterface {
 		return TMAddon.getInstance().getNHandler().getCacheHandler().getCommands();
 	}
 
+	@Override
+	public void reloadConfiguration() {
+		TMAddon.getInstance().generateFiles();
+		TMAddon.getInstance().cache();
+	}
+
 }

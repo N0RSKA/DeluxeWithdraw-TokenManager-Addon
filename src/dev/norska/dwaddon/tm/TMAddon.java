@@ -1,5 +1,7 @@
 package dev.norska.dwaddon.tm;
 
+import java.io.IOException;
+
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -27,11 +29,23 @@ public class TMAddon extends JavaPlugin {
 				IridiumColorAPI.process("&8[&e&lDeluxeWithdraw TokenManager Addon&8]&r");
 		
 		Bukkit.getConsoleSender().sendMessage(" ");
-    	Bukkit.getConsoleSender().sendMessage(prefix + " §7" + getDescription().getVersion() + "§f, a §efreemium §faddon by §7Norska §f- §7Thanks for using!");
+    	Bukkit.getConsoleSender().sendMessage(prefix + " §7" + getDescription().getVersion() + "§f, a §afree §faddon by §7Norska §f- §7Thanks for using!");
 		Bukkit.getConsoleSender().sendMessage(" ");
 		
-		getNHandler().getConfigurationHandler().generateFiles(this);
-		getNHandler().getCacheHandler().cache(this);
+		Bukkit.getConsoleSender().sendMessage(prefix + " §fChecking for DeluxeWithdraw...");
+		if (Bukkit.getServer().getPluginManager().getPlugin("DeluxeWithdraw") != null) {
+			if (Bukkit.getServer().getPluginManager().getPlugin("DeluxeWithdraw").isEnabled()) {
+				Bukkit.getConsoleSender().sendMessage(prefix + " §fDetected & hooked into DeluxeWithdraw!");
+			}
+		} else {
+			Bukkit.getConsoleSender().sendMessage(prefix + " §fCould not find DeluxeWithdraw, disabling plugin.");
+			Bukkit.getConsoleSender().sendMessage(prefix + " §fYou can purchase the resource from here: §chttps://norska.dev/r/spigot/dw/§f, §chttps://norska.dev/r/polymart/dw/");
+			getServer().getPluginManager().disablePlugin(this);
+			return;
+		}
+		
+		generateFiles();
+		cache();
 		
 		try {
 			DeluxeWithdraw.getInstance().getAddonProvider().registerNewProvider("TOKENMANAGER", new TMInterface());
@@ -40,6 +54,19 @@ public class TMAddon extends JavaPlugin {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public void generateFiles() {
+		try {
+			getNHandler().getConfigurationHandler().generateFiles(this);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	}
+	
+	public void cache() {
+		getNHandler().getCacheHandler().cache(this);
 	}
 	
 }
