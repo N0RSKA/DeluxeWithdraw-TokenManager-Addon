@@ -100,4 +100,9 @@ public class TMInterface implements DWAddonInterface {
 		TMAddon.getInstance().cache();
 	}
 
+	@Override
+	public Boolean useInt() {
+		return true;
+	}
+
 }

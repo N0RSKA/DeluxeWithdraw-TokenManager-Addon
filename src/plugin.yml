@@ -1,6 +1,6 @@
 name: DeluxeWithdrawTokenManagerAddon
 main: dev.norska.dwaddon.tm.TMAddon
-version: Build 2
+version: Build 2a
 author: Norska
 website: "https://norska.dev"
 api-version: 1.13
